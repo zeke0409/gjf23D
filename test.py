@@ -1,3 +1,9 @@
 from gjf23D import gjf23D
+import sys
+
 if __name__=="__main__":
-    gjf23D("C:/Users/kazuk/procon-library/physic3/gjf23d/Gaussian/6/qm.gjf")
+    args = sys.argv
+    if len(args) != 2:
+        print("check arg")
+        exit()
+    gjf23D(args[1])

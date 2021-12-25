@@ -3,7 +3,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import math
 import logging
-DEBUG=True
+DEBUG=False
 
 def decide_position1(init_pos, distance):
     init_pos[0] += distance
@@ -70,7 +70,8 @@ def gjf23D(file):
         cmd_list = l[i].split()
         if not cmd_list:
             continue
-        print(cmd_list)
+        if DEBUG:
+            print(cmd_list)
         if i == 5:
             if len(cmd_list) != 1:
                 logging.error('Syntax error')
@@ -114,13 +115,13 @@ def gjf23D(file):
             atom_infos.append(atom_info)
             atom_bonds.append([init_atom_num, i-5])
     for i in atom_infos:
-        i.pos = np.round(i.pos, decimals=10)
+        i.pos = np.round(i.pos, decimals=20)
     np.set_printoptions(suppress=True)
+    for i in atom_infos:
+        for k, v in i.__dict__.items():
+            print(k, ":", v, end=' , ')
+        print()
     if DEBUG:
-        for i in atom_infos:
-            for k, v in i.__dict__.items():
-                print(k, ":", v, end=' , ')
-            print()
         print(atom_bonds)
 
     # Figureを追加
@@ -162,7 +163,8 @@ def gjf23D(file):
         z_list.append(i.pos[2])
         ax.text(i.pos[0], i.pos[1], i.pos[2], i.atom+str(index))
         color_list.append(color)
-        print(i.pos)
+        if DEBUG:
+            print(i.pos)
         index += 1
     ax.scatter(x_list, y_list, z_list, c=color_list, s=100)
     for i in atom_bonds:
