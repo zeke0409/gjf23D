@@ -124,11 +124,11 @@ def gjf23D(file):
         print(atom_bonds)
 
     # Figureを追加
-    fig = plt.figure(figsize=(8, 8))
+    fig = plt.figure(figsize=(8, 8), facecolor="gray")
 
     # 3DAxesを追加
     ax = fig.add_subplot(111, projection='3d')
-
+    ax.set_facecolor("gray")
     # Axesのタイトルを設定
     ax.set_title("", size=20)
 
@@ -144,13 +144,19 @@ def gjf23D(file):
     color_list = []
     index = 1
     for i in atom_infos:
-        color = 'red'
+        color = 'green'
         if i.atom == 'C':
             color = 'black'
         if i.atom == 'O':
-            color = 'blue'
+            color = 'red'
         if i.atom == 'H':
-            color = 'gray'
+            color = 'white'
+        if i.atom=='N':
+            color='blue'
+        if i.atom=='S':
+            color='yellow'
+        if i.atom=='P':
+            color='purple'
         x_list.append(i.pos[0])
         y_list.append(i.pos[1])
         z_list.append(i.pos[2])
@@ -167,7 +173,9 @@ def gjf23D(file):
 
     # 曲線を描画
     ax.view_init(elev=60, azim=30)
-    plt.xlim(-5, 5)
-    plt.ylim(-5, 5)
+    ax.tick_params(bottom=False,
+                   left=False,
+                   right=False,
+                   top=False)
     plt.grid()
     plt.show()
