@@ -24,6 +24,8 @@ python test.py file_name
 python test.py  Gaussian/butadiene.gjf
 ```
 
+![alt tag](https://github.com/zeke0409/gjf23D/blob/master/image/Figure_1.png)
+
 ## Assumed gjf grammar
 Ignore the first five lines.
 ```
