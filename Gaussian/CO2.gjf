@@ -1,0 +1,9 @@
+#HF/4-31G* POP=FULL OPT FREQ
+
+CO2
+
+0 1
+O
+C 1 1.2
+O 2 1.2 1 180.0
+
